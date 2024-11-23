@@ -11,6 +11,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddCarter();
 
 builder.Services.AddPostgreSqlConfig(builder.Configuration);
+builder.Services.AddRedisConfig(builder.Configuration);
 
 #pragma warning disable EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 builder.Services.AddHybridCache(options =>
@@ -26,12 +27,6 @@ builder.Services.AddHybridCache(options =>
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
-});
-
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-    options.Configuration = builder.Configuration.GetConnectionString("shortenUrl-cache");
-    options.InstanceName = "Shorten-Url";
 });
 
 var app = builder.Build();

@@ -9,5 +9,5 @@ public static class PostgreSqlExtensions
             options => options.UseNpgsql(configuration.GetConnectionString(ConnectionString)));
 
         return services;
-    } 
+    }
 }
