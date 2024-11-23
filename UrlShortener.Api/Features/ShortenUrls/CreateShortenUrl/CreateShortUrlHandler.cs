@@ -5,7 +5,7 @@ public sealed record CreateShortUrlResult(string ShortUrl);
 public sealed class CreateShortUrlHandler(
     IShortenUrlService shortenUrlService,
     ApplicationDbContext dbConetxt,
-    HttpContext httpContext) 
+    IHttpContextAccessor httpContextAccessor)
     : IRequestHandler<CreateShortUrlCommand, CreateShortUrlResult>
 {
     public async Task<CreateShortUrlResult> Handle(
@@ -35,8 +35,7 @@ public sealed class CreateShortUrlHandler(
         return new CreateShortUrlResult(shortUrl);
     }
 
-    private string FormatShortUrl(string uniqueCode)
-    {
-        return $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/{uniqueCode}";
-    }
+    private string FormatShortUrl(string uniqueCode) =>
+        $"{httpContextAccessor?.HttpContext?.Request.Scheme}://{httpContextAccessor?.HttpContext?.Request.Host}/{uniqueCode}";
+
 }

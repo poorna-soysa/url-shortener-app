@@ -1,5 +1,3 @@
-using UrlShortener.Api.Database;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -7,6 +5,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddScoped<IShortenUrlService, ShortenUrlService>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddMediatR(config =>
 {
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("shortenUrl-db"));
 });
+
 
 var app = builder.Build();
 
