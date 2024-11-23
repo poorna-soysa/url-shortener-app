@@ -1,5 +1,4 @@
-﻿
-namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+﻿namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
 
 public sealed record CreateShortUrlRequest(string Url);
 public sealed class CreateShortUrlEndpoints : ICarterModule
