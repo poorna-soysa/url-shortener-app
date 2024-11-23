@@ -1,13 +1,11 @@
 ﻿namespace UrlShortener.Api.Features.ShortenUrls;
 
-public class ShortenUrlService(ApplicationDbContext dbContext) : IShortenUrlService
+public sealed class ShortenUrlService(ApplicationDbContext dbContext) : IShortenUrlService
 {
+    private const int MAX_LENGTH = 7;
+    private const string AllLettersAndNumbers = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     public async Task<string> GenerateUniqueCode()
     {
-        const int MAX_LENGTH = 7;
-        const string Alphabet =
-       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
         Random random = new();
 
         var chars = new char[MAX_LENGTH];
@@ -16,9 +14,9 @@ public class ShortenUrlService(ApplicationDbContext dbContext) : IShortenUrlServ
         {
             for (int i = 0; i < MAX_LENGTH; i++)
             {
-                var randomIndex = random.Next(Alphabet.Length);
+                var randomIndex = random.Next(AllLettersAndNumbers.Length);
 
-                chars[i] = Alphabet[randomIndex];
+                chars[i] = AllLettersAndNumbers[randomIndex];
             }
 
             string uniqueCode = new string(chars);
@@ -27,8 +25,6 @@ public class ShortenUrlService(ApplicationDbContext dbContext) : IShortenUrlServ
             {
                 return uniqueCode;
             }
-
-            return uniqueCode;
         }
     }
 
