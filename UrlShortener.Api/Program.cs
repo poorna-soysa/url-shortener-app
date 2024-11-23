@@ -6,6 +6,11 @@ builder.AddServiceDefaults();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddMediatR(config =>
+{
+    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+});
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
