@@ -18,7 +18,8 @@ public class CreateShortUrlHandler(
             throw new ArgumentException("");
         }
 
-        var shortUrl = FormatShortUrl(await shortenUrlService.GenerateUniqueCode());
+        var uniqueCOde = await shortenUrlService.GenerateUniqueCode();
+        var shortUrl = FormatShortUrl(uniqueCOde);
 
         ShortenUrl shortenUrl = new()
         {
