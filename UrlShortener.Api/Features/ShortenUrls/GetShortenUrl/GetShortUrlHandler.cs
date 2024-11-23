@@ -10,15 +10,9 @@ public sealed class GetShortUrlHandler(
         GetShortUrlQuery query,
         CancellationToken cancellationToken)
     {
-        var shortenUrl = await cache.GetOrCreateAsync(
-            $"code-{query.Code}",
-            async _ =>
-            {
-                return await dbConetxt
-                       .ShortenUrls
-                       .SingleOrDefaultAsync(d => string.Equals(d.UniqueCode, query.Code));
-            },
-            cancellationToken: cancellationToken);
+        ArgumentException.ThrowIfNullOrEmpty(nameof(query.Code));
+
+        ShortenUrl? shortenUrl = await GetOrCreateAsync(query.Code, cancellationToken);
 
         if (shortenUrl is null)
         {
@@ -27,4 +21,17 @@ public sealed class GetShortUrlHandler(
 
         return new GetShortUrlResult(shortenUrl.LongUrl!);
     }
+
+    private async Task<ShortenUrl?> GetOrCreateAsync(
+        string uniqueCode,
+        CancellationToken cancellationToken) =>
+             await cache.GetOrCreateAsync(
+             $"code-{uniqueCode}",
+            async _ =>
+              {
+                  return await dbConetxt
+                         .ShortenUrls
+                         .SingleOrDefaultAsync(d => string.Equals(d.UniqueCode, uniqueCode));
+              },
+            cancellationToken: cancellationToken);
 }

@@ -11,7 +11,14 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddCarter();
 
 #pragma warning disable EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
-builder.Services.AddHybridCache();
+builder.Services.AddHybridCache(options =>
+{
+    options.DefaultEntryOptions = new HybridCacheEntryOptions
+    {
+        Expiration = TimeSpan.FromMinutes(5),
+        LocalCacheExpiration = TimeSpan.FromMinutes(5)
+    };
+});
 #pragma warning restore EXTEXP0018 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 
 builder.Services.AddMediatR(config =>
@@ -22,6 +29,12 @@ builder.Services.AddMediatR(config =>
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("shortenUrl-db"));
+});
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("shortenUrl-cache");
+    options.InstanceName = "Shorten-Url";
 });
 
 var app = builder.Build();
