@@ -11,4 +11,8 @@
 	  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\url-shortener.ServiceDefaults\url-shortener.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

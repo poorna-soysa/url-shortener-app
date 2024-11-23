@@ -7,6 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{973DA4A9-81E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Api", "UrlShortener.Api\UrlShortener.Api.csproj", "{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "url-shortener.AppHost", "url-shortener.AppHost\url-shortener.AppHost.csproj", "{084E589E-BD1A-4790-9E37-8A56FAFE0D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "url-shortener.ServiceDefaults", "url-shortener.ServiceDefaults\url-shortener.ServiceDefaults.csproj", "{B3AF79BD-F012-433A-BA9A-246513CE3CAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspire", "aspire", "{D883BFCD-DBED-4E87-A376-E84883E89EA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +23,21 @@ Global
 		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084E589E-BD1A-4790-9E37-8A56FAFE0D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084E589E-BD1A-4790-9E37-8A56FAFE0D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084E589E-BD1A-4790-9E37-8A56FAFE0D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084E589E-BD1A-4790-9E37-8A56FAFE0D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AF79BD-F012-433A-BA9A-246513CE3CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AF79BD-F012-433A-BA9A-246513CE3CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AF79BD-F012-433A-BA9A-246513CE3CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AF79BD-F012-433A-BA9A-246513CE3CAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC} = {973DA4A9-81E6-47FE-A94F-E9A6D25E4553}
+		{084E589E-BD1A-4790-9E37-8A56FAFE0D1F} = {D883BFCD-DBED-4E87-A376-E84883E89EA2}
+		{B3AF79BD-F012-433A-BA9A-246513CE3CAD} = {D883BFCD-DBED-4E87-A376-E84883E89EA2}
 	EndGlobalSection
 EndGlobal
