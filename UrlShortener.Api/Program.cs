@@ -13,11 +13,7 @@ builder.Services.AddCarter();
 builder.Services.AddPostgreSqlConfig(builder.Configuration);
 builder.Services.AddRedisConfig(builder.Configuration);
 builder.Services.AddHybridCacheConfig();
-
-builder.Services.AddMediatR(config =>
-{
-    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
-});
+builder.Services.AddMediatRConfig();
 
 var app = builder.Build();
 
