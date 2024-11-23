@@ -15,6 +15,7 @@
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
+	  <PackageReference Include="Carter" Version="8.2.1" />
   </ItemGroup>
 
   <ItemGroup>

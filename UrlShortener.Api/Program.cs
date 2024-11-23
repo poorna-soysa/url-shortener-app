@@ -1,5 +1,3 @@
-using UrlShortener.Api.Extensions;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -10,6 +8,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IShortenUrlService, ShortenUrlService>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddCarter();
 
 builder.Services.AddMediatR(config =>
 {
@@ -20,7 +19,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("shortenUrl-db"));
 });
-
 
 var app = builder.Build();
 
@@ -33,6 +31,7 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
 }
 
+app.MapCarter();
 app.UseHttpsRedirection();
 
 app.Run();

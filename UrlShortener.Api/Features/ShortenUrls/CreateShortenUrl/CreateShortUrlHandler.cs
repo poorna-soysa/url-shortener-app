@@ -9,21 +9,16 @@ public sealed class CreateShortUrlHandler(
     : IRequestHandler<CreateShortUrlCommand, CreateShortUrlResult>
 {
     public async Task<CreateShortUrlResult> Handle(
-        CreateShortUrlCommand request,
+        CreateShortUrlCommand command,
         CancellationToken cancellationToken)
     {
-        if (!Uri.TryCreate(request.Url, UriKind.Absolute, out _))
-        {
-            throw new ArgumentException("");
-        }
-
         var uniqueCode = await shortenUrlService.GenerateUniqueCode();
         var shortUrl = FormatShortUrl(uniqueCode);
 
         ShortenUrl shortenUrl = new()
         {
             Id = Guid.NewGuid(),
-            LongUrl = request.Url,
+            LongUrl = command.Url,
             ShortUrl = shortUrl,
             UniqueCode = uniqueCode,
             CreatedOnUtc = DateTime.UtcNow
