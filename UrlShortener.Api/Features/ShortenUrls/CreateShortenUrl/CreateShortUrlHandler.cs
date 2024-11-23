@@ -1,11 +1,10 @@
-﻿using UrlShortener.Api.Entities;
-
-namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+﻿namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
 
 public sealed record CreateShortUrlCommand(string Url) : IRequest<CreateShortUrlResult>;
 public sealed record CreateShortUrlResult(string ShortUrl);
-public class CreateShortUrlHandler(
+public sealed class CreateShortUrlHandler(
     IShortenUrlService shortenUrlService,
+    ApplicationDbContext dbConetxt,
     HttpContext httpContext) 
     : IRequestHandler<CreateShortUrlCommand, CreateShortUrlResult>
 {
@@ -18,16 +17,20 @@ public class CreateShortUrlHandler(
             throw new ArgumentException("");
         }
 
-        var uniqueCOde = await shortenUrlService.GenerateUniqueCode();
-        var shortUrl = FormatShortUrl(uniqueCOde);
+        var uniqueCode = await shortenUrlService.GenerateUniqueCode();
+        var shortUrl = FormatShortUrl(uniqueCode);
 
         ShortenUrl shortenUrl = new()
         {
             Id = Guid.NewGuid(),
             LongUrl = request.Url,
             ShortUrl = shortUrl,
+            UniqueCode = uniqueCode,
             CreatedOnUtc = DateTime.UtcNow
         };
+
+        dbConetxt.ShortenUrls.Add(shortenUrl);
+        await dbConetxt.SaveChangesAsync();
 
         return new CreateShortUrlResult(shortUrl);
     }

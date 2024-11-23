@@ -1,6 +1,6 @@
 ﻿namespace UrlShortener.Api.Features.ShortenUrls;
 
-public class ShortenUrlService : IShortenUrlService
+public class ShortenUrlService(ApplicationDbContext dbContext) : IShortenUrlService
 {
     public async Task<string> GenerateUniqueCode()
     {
@@ -23,13 +23,18 @@ public class ShortenUrlService : IShortenUrlService
 
             string uniqueCode = new string(chars);
 
-            //if (true)
-            //{
-            //    return uniqueCode;
-            //}
+            if (!await IsUniqueCodeExist(uniqueCode))
+            {
+                return uniqueCode;
+            }
 
             return uniqueCode;
         }
     }
+
+    private async Task<bool> IsUniqueCodeExist(string uniqueCode) =>
+        await dbContext
+       .ShortenUrls
+       .AnyAsync(d => string.Equals(d.UniqueCode, uniqueCode));
 }
 
