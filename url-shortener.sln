@@ -1,12 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{973DA4A9-81E6-47FE-A94F-E9A6D25E4553}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Api", "UrlShortener.Api\UrlShortener.Api.csproj", "{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C4DA481-0DE2-41AF-90A5-64344E9C9DFC} = {973DA4A9-81E6-47FE-A94F-E9A6D25E4553}
 	EndGlobalSection
 EndGlobal
