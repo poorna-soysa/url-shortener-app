@@ -1,6 +1,4 @@
-﻿using UrlShortener.Api.Abstractions;
-
-namespace UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
+﻿namespace UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
 
 public interface IGetShortUrlHandler: IHandler
 {

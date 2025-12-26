@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using UrlShortener.Api.Abstractions;
-
-namespace UrlShortener.Api.Extensions;
+﻿namespace UrlShortener.Api.Extensions;
 
 public static class HandlerRegistrationExtensions
 {

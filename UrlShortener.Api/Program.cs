@@ -1,6 +1,3 @@
-using UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
-using UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
