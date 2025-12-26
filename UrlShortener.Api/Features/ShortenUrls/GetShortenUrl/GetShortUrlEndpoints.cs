@@ -4,7 +4,10 @@ public sealed class GetShortUrlEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/{code}", async (string code, IGetShortUrlHandler handler, CancellationToken ct) =>
+        app.MapGet("/{code}", async (
+            string code, 
+            IGetShortUrlHandler handler,
+            CancellationToken ct) =>
         {
             try
             {

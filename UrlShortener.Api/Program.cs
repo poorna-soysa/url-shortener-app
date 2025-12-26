@@ -1,3 +1,5 @@
+using UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -12,6 +14,8 @@ builder.Services.AddPostgreSqlConfig(builder.Configuration);
 builder.Services.AddRedisConfig(builder.Configuration);
 builder.Services.AddHybridCacheConfig();
 builder.Services.AddMediatRConfig();
+
+builder.Services.AddScoped<IGetShortUrlHandler, GetShortUrlHandler>();
 
 var app = builder.Build();
 
