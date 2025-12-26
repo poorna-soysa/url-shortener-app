@@ -1,7 +1,7 @@
 
-# Url Shortener API with .NET 9, Aspire, PostgreSQL, Hybrid Cache, and Redis
+# Url Shortener API with .NET 10, Aspire, PostgreSQL, Hybrid Cache, and Redis
 
-This repository showcases a sample API built with .NET 9 that demonstrates the integration of .NET Aspire orchestration. The application utilizes PostgreSQL as database, and Redis for caching.
+This repository showcases a sample API built with .NET 10 that demonstrates the integration of .NET Aspire orchestration. The application utilizes PostgreSQL as database, and Redis for caching.
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -17,7 +17,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
 - Docker
 
 ### Installation
@@ -49,7 +49,7 @@ This template follows the Vertical Slice Architecture, which organizes code by f
 
 ## Technologies Used
 
-- **.NET 9**
+- **.NET 10**
 - **.NET Aspire**
 - **PostgreSQL**
 - **Hybrid Cache**
