@@ -14,7 +14,7 @@ builder.Services.AddCarter();
 builder.Services.AddPostgreSqlConfig(builder.Configuration);
 builder.Services.AddRedisConfig(builder.Configuration);
 builder.Services.AddHybridCacheConfig();
-builder.Services.AddMediatRConfig();
+//builder.Services.AddMediatRConfig();
 
 builder.Services.AddScoped<IGetShortUrlHandler, GetShortUrlHandler>();
 builder.Services.AddScoped<ICreatetShortUrlHandler, CreateShortUrlHandler>();

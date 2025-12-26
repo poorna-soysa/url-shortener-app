@@ -1,7 +1,6 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Caching.Hybrid;
 
-global using MediatR;
 global using Carter;
 
 global using UrlShortener.Api.Entities;
