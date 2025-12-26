@@ -1,14 +1,17 @@
 ﻿namespace UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
 
+public interface IGetShortUrlHandler
+{
+    Task<GetShortUrlResult> HandleAsync(GetShortUrlQuery query, CancellationToken cancellationToken);
+}
+
 public sealed record GetShortUrlQuery(string Code) : IRequest<GetShortUrlResult>;
 public sealed record GetShortUrlResult(string LongUrl);
 public sealed class GetShortUrlHandler(
     ApplicationDbContext dbConetxt,
-    HybridCache cache) : IRequestHandler<GetShortUrlQuery, GetShortUrlResult>
+    HybridCache cache) : IGetShortUrlHandler
 {
-    public async Task<GetShortUrlResult> Handle(
-        GetShortUrlQuery query,
-        CancellationToken cancellationToken)
+    public async Task<GetShortUrlResult> HandleAsync(GetShortUrlQuery query, CancellationToken cancellationToken)
     {
         ArgumentException.ThrowIfNullOrEmpty(nameof(query.Code));
 
