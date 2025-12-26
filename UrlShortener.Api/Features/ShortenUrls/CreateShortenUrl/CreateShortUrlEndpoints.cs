@@ -5,7 +5,10 @@ public sealed class CreateShortUrlEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/short-url", async (CreateShortUrlRequest request, ISender sender) =>
+        app.MapPost("/short-url", async (
+            CreateShortUrlRequest request,
+            ICreatetShortUrlHandler handler,
+            CancellationToken ct) =>
         {
             if (!Uri.TryCreate(request.Url, UriKind.Absolute, out _))
             {
@@ -14,7 +17,7 @@ public sealed class CreateShortUrlEndpoints : ICarterModule
 
             var command = new CreateShortUrlCommand(request.Url);
 
-            var result = await sender.Send(command);
+            var result = await handler.HandleAsync(command, ct);
 
             return Results.Ok(result.ShortUrl);
         })

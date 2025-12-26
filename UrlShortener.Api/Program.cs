@@ -1,3 +1,4 @@
+using UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
 using UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddHybridCacheConfig();
 builder.Services.AddMediatRConfig();
 
 builder.Services.AddScoped<IGetShortUrlHandler, GetShortUrlHandler>();
+builder.Services.AddScoped<ICreatetShortUrlHandler, CreateShortUrlHandler>();
 
 var app = builder.Build();
 
