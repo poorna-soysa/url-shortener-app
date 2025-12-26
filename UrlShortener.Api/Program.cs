@@ -11,7 +11,7 @@ builder.Services.AddCarter();
 builder.Services.AddPostgreSqlConfig(builder.Configuration);
 builder.Services.AddRedisConfig(builder.Configuration);
 builder.Services.AddHybridCacheConfig();
-builder.Services.AddMediatRConfig();
+builder.Services.AddHandlersFromAssembly(typeof(Program).Assembly);
 
 var app = builder.Build();
 

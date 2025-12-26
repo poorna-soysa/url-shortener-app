@@ -4,13 +4,16 @@ public sealed class GetShortUrlEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/{code}", async (string code, ISender sender) =>
+        app.MapGet("/{code}", async (
+            string code, 
+            IGetShortUrlHandler handler,
+            CancellationToken ct) =>
         {
             try
             {
                 var query = new GetShortUrlQuery(code);
 
-                var result = await sender.Send(query);
+                var result = await handler.HandleAsync(query, ct);
 
                 return Results.Redirect(result.LongUrl);
             }

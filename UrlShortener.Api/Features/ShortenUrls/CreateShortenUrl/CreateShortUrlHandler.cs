@@ -1,14 +1,20 @@
-﻿namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+﻿using UrlShortener.Api.Abstractions;
 
-public sealed record CreateShortUrlCommand(string Url) : IRequest<CreateShortUrlResult>;
+namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+
+public interface ICreatetShortUrlHandler: IHandler
+{
+    Task<CreateShortUrlResult> HandleAsync(CreateShortUrlCommand command, CancellationToken cancellationToken);
+}
+public sealed record CreateShortUrlCommand(string Url);
 public sealed record CreateShortUrlResult(string ShortUrl);
 public sealed class CreateShortUrlHandler(
     IShortenUrlService shortenUrlService,
     ApplicationDbContext dbConetxt,
     IHttpContextAccessor httpContextAccessor)
-    : IRequestHandler<CreateShortUrlCommand, CreateShortUrlResult>
+    : ICreatetShortUrlHandler
 {
-    public async Task<CreateShortUrlResult> Handle(
+    public async Task<CreateShortUrlResult> HandleAsync(
         CreateShortUrlCommand command,
         CancellationToken cancellationToken)
     {
@@ -32,5 +38,4 @@ public sealed class CreateShortUrlHandler(
 
     private string FormatShortUrl(string uniqueCode) =>
         $"{httpContextAccessor?.HttpContext?.Request.Scheme}://{httpContextAccessor?.HttpContext?.Request.Host}/{uniqueCode}";
-
 }
