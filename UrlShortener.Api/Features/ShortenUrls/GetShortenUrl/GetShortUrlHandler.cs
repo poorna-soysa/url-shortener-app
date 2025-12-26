@@ -1,6 +1,8 @@
-﻿namespace UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
+﻿using UrlShortener.Api.Abstractions;
 
-public interface IGetShortUrlHandler
+namespace UrlShortener.Api.Features.ShortenUrls.GetShortenUrl;
+
+public interface IGetShortUrlHandler: IHandler
 {
     Task<GetShortUrlResult> HandleAsync(GetShortUrlQuery query, CancellationToken cancellationToken);
 }

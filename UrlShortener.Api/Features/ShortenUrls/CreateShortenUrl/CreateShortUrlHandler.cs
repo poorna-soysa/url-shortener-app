@@ -1,6 +1,8 @@
-﻿namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+﻿using UrlShortener.Api.Abstractions;
 
-public interface ICreatetShortUrlHandler
+namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
+
+public interface ICreatetShortUrlHandler: IHandler
 {
     Task<CreateShortUrlResult> HandleAsync(CreateShortUrlCommand command, CancellationToken cancellationToken);
 }
