@@ -5,7 +5,7 @@ public interface IGetShortUrlHandler
     Task<GetShortUrlResult> HandleAsync(GetShortUrlQuery query, CancellationToken cancellationToken);
 }
 
-public sealed record GetShortUrlQuery(string Code) : IRequest<GetShortUrlResult>;
+public sealed record GetShortUrlQuery(string Code);
 public sealed record GetShortUrlResult(string LongUrl);
 public sealed class GetShortUrlHandler(
     ApplicationDbContext dbConetxt,
