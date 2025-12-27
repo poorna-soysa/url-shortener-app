@@ -7,7 +7,7 @@ public sealed class CreateShortUrlEndpoints : ICarterModule
     {
         app.MapPost("/short-url", async (
             CreateShortUrlRequest request,
-            ICreatetShortUrlHandler handler,
+            ICreateShortUrlHandler handler,
             CancellationToken ct) =>
         {
             if (!Uri.TryCreate(request.Url, UriKind.Absolute, out _))

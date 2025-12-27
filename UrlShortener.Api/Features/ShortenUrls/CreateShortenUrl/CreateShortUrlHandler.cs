@@ -2,7 +2,7 @@
 
 namespace UrlShortener.Api.Features.ShortenUrls.CreateShortenUrl;
 
-public interface ICreatetShortUrlHandler: IHandler
+public interface ICreateShortUrlHandler: IHandler
 {
     Task<CreateShortUrlResult> HandleAsync(CreateShortUrlCommand command, CancellationToken cancellationToken);
 }
@@ -12,7 +12,7 @@ public sealed class CreateShortUrlHandler(
     IShortenUrlService shortenUrlService,
     ApplicationDbContext dbConetxt,
     IHttpContextAccessor httpContextAccessor)
-    : ICreatetShortUrlHandler
+    : ICreateShortUrlHandler
 {
     public async Task<CreateShortUrlResult> HandleAsync(
         CreateShortUrlCommand command,
